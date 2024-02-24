@@ -10,6 +10,16 @@ const themes = createTheme({
     fontWeightHeavy: 800,
     fontWeightFat: 900,
   },
+
+  palette: {
+    primary: {
+      main: "#2196f3",
+    },
+    secondary: {
+      main: "#7b7b7b",
+    },
+  },
+
   direction: "rtl",
 });
 

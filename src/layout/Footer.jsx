@@ -1,16 +1,23 @@
-import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
-import React from "react";
+// mui
+import { Box, Typography } from "@mui/material";
 
 function Footer() {
   return (
-    <Box component="div">
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ textAlign: "center" }}>
-          
-          </Typography>
-        </Toolbar>
-      </AppBar>
+    <Box component="footer">
+      <Typography
+        component="p"
+        variant="p"
+        bgcolor="#f7f7f7"
+        color="primary"
+        padding="10px"
+        textAlign="center"
+        borderTop={1}
+        borderColor="#ddd"
+        mt={10}
+        sx={{ cursor: "context-menu" }}
+      >
+        Developed By Ali ❤️
+      </Typography>
     </Box>
   );
 }

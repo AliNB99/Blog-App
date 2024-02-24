@@ -1,15 +1,16 @@
 import React from "react";
+
+// component
 import Header from "./Header";
 import Footer from "./Footer";
-import { Container } from "@mui/material";
 
 function Layout({ children }) {
   return (
-    <Container maxWidth="lg">
+    <>
       <Header />
       {children}
       <Footer />
-    </Container>
+    </>
   );
 }
 
