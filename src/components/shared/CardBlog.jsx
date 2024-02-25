@@ -12,7 +12,6 @@ import {
 import { Link } from "react-router-dom";
 
 function CardBlog({ data }) {
-  console.log(data.slug);
   const { coverPhoto, slug, title, author } = data;
   return (
     <Card sx={{ boxShadow: "0px 0px 10px #aaa" }}>

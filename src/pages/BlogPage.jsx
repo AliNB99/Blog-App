@@ -1,15 +1,17 @@
 import { useQuery } from "@apollo/client";
 import { GET_POST } from "../graphql/queries";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import sanitizeHtml from "sanitize-html";
 import Loader from "../components/shared/Loader";
+import CreateComment from "../components/comments/CreateComment";
+import ShowComments from "../components/comments/ShowComments";
+import NotFoundPage from "./404";
 
 function BlogPage() {
   const { slug } = useParams();
-  const navigate = useNavigate();
   const { loading, data, error } = useQuery(GET_POST, {
     variables: {
       slug: slug,
@@ -18,19 +20,19 @@ function BlogPage() {
 
   if (loading) return <Loader />;
   if (error) return <h1>{error.message}</h1>;
+  if (!data.post) return <NotFoundPage />;
 
   const { author, content, coverPhoto, title } = data.post;
-  console.log(content);
 
   return (
     <Container maxWidth="lg">
-      <Grid container mt={4} px={3}>
+      <Grid container mt={5} px={3}>
         <Grid
           item
           xs={12}
           sx={{ width: "100%" }}
           mx={1}
-          mb={4}
+          mb={6}
           display="flex"
           justifyContent="space-between"
         >
@@ -56,13 +58,18 @@ function BlogPage() {
         <Grid item xs={12} display="flex" alignItems="center" my={4}>
           <Avatar
             src={author.avatar.url}
-            sx={{ width: "80px", height: "80px" }}
+            sx={{ width: "80px", height: "80px", marginRight: "20px" }}
           />
-          <Link to={`/authors/${author.slug}`}>
-            <Typography variant="h6" component="h6" mr={2}>
-              {author.name}
+          <Box component="div">
+            <Link to={`/authors/${author.slug}`}>
+              <Typography variant="h6" component="h6" mr={2}>
+                {author.name}
+              </Typography>
+            </Link>
+            <Typography variant="p" component="p" color="secondary.main">
+              {author.field}
             </Typography>
-          </Link>
+          </Box>
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -72,6 +79,12 @@ function BlogPage() {
             lineHeight={3}
             textAlign="justify"
           />
+        </Grid>
+        <Grid item xs={12} mt={15}>
+          <CreateComment slug={slug} />
+        </Grid>
+        <Grid item xs={12}>
+          <ShowComments slug={slug} />
         </Grid>
       </Grid>
     </Container>

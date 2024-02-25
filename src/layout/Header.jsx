@@ -17,18 +17,23 @@ const Header = () => {
             <Box component="div" sx={{ flexGrow: 1 }}>
               <Typography
                 sx={{ cursor: "context-menu" }}
-                variant="h6"
-                component="div"
+                variant="h5"
+                component="h5"
+                fontWeight={700}
               >
                 مینی وبلاگ
               </Typography>
             </Box>
             <Box component="div" display="flex" gap={5}>
               <Link to="/blogs">
-                <Typography>وبلاگ ها</Typography>
+                <Typography variant="p" component="p" fontWeight={700}>
+                  وبلاگ ها
+                </Typography>
               </Link>
               <Link to="/authors">
-                <Typography>نویسندگان</Typography>
+                <Typography variant="p" component="p" fontWeight={700}>
+                  نویسندگان
+                </Typography>
               </Link>
             </Box>
           </Toolbar>

@@ -1,11 +1,11 @@
 import { useQuery } from "@apollo/client";
-import React from "react";
 import { GET_AUTHOR } from "../graphql/queries";
 import { useParams } from "react-router-dom";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import sanitizeHtml from "sanitize-html";
 import CardBlog from "../components/shared/CardBlog";
 import Loader from "../components/shared/Loader";
+import NotFoundPage from "./404";
 
 function AuthorPage() {
   const { slug } = useParams();
@@ -14,13 +14,15 @@ function AuthorPage() {
       slug: slug,
     },
   });
+  
+  console.log(data);
 
   if (loading) return <Loader />;
   if (error) return <h1>{error.message}</h1>;
+  if (!data.author) return <NotFoundPage />;
 
   const { avatar, field, name, posts, description } = data.author;
 
-  console.log(data);
   return (
     <Container maxWidth="lg">
       <Grid container gap={10} px={3}>

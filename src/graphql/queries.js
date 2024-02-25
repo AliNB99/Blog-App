@@ -26,6 +26,7 @@ const GET_POST = gql`
       author {
         name
         slug
+        field
         avatar {
           url
         }
@@ -81,4 +82,14 @@ const GET_AUTHOR = gql`
   }
 `;
 
-export { GET_POSTS, GET_POST, GET_AUTHOR, GET_AUTHORS };
+const GET_COMMENTS = gql`
+  query getComments($slug: String!) {
+    comments(where: { post: { slug: $slug } }) {
+      id
+      name
+      text
+    }
+  }
+`;
+
+export { GET_POSTS, GET_POST, GET_AUTHOR, GET_AUTHORS, GET_COMMENTS };
