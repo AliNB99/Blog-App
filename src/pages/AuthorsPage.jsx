@@ -4,8 +4,11 @@ import { GET_AUTHORS } from "../graphql/queries";
 import { Container, Grid, Typography } from "@mui/material";
 import CardAuthor from "../components/authorsPage/CardAuthor";
 import Loader from "../components/shared/Loader";
+import useTitle from "../hooks/useTitle";
 
 function AuthorsPage() {
+  useTitle("نویسندگان");
+
   const { loading, data, error } = useQuery(GET_AUTHORS);
 
   if (loading) return <Loader />;

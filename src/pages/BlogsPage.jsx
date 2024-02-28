@@ -4,8 +4,10 @@ import { GET_POSTS } from "../graphql/queries";
 import CardBlog from "../components/shared/CardBlog";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Loader from "../components/shared/Loader";
+import useTitle from "../hooks/useTitle";
 
 function BlogsPage() {
+  useTitle("بلاگ ها");
   const { loading, data, error } = useQuery(GET_POSTS);
   if (loading) return <Loader />;
   if (error) return <h1>{error.message}</h1>;

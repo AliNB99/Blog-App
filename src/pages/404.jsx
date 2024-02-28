@@ -1,11 +1,10 @@
-import React from "react";
-
 import Icon404 from "../svg/404.rocket.svg";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 function NotFoundPage() {
-  const navigate = useNavigate();
+  useTitle("خطای 404");
   return (
     <Grid container display="flex" flexDirection="column" alignItems="center">
       <Grid item xs={12}>
