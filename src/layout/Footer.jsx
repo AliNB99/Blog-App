@@ -16,7 +16,7 @@ function Footer() {
         mt={10}
         sx={{ cursor: "context-menu" }}
       >
-        توسعه داده شده توسط علی ❤️
+        ساخته شده با ❤️ توسط AliNB99
       </Typography>
     </Box>
   );
