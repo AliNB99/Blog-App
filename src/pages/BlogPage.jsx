@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { GET_POST } from "../graphql/queries";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -12,6 +12,7 @@ import NotFoundPage from "./404";
 
 function BlogPage() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const { loading, data, error } = useQuery(GET_POST, {
     variables: {
       slug: slug,
